@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="dsaudio"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+
+	<!-- Sample Thing Type -->
+	<thing-type id="dsaudio_thing">
+		<label>DSAudio Controller</label>
+		<description>Sample thing for DSAudio Binding</description>
+
+		<channels>
+			<channel id="dsaudio_channel_1" typeId="dsaudio_channel" />
+			<channel id="artist" typeId="artist"/>
+			<channel id="title" typeId="title"/>
+			<channel id="coverartdata" typeId="coverartdata"/>
+		</channels>
+
+		<config-description>
+			<parameter name="host" type="text" required="true">
+				<label>Host</label>
+				<description></description>
+			</parameter>
+			<parameter name="port" type="integer" required="true">
+				<label>Port</label>
+				<description></description>
+				<default>5000</default>
+			</parameter>
+			<parameter name="useSsl" type="boolean" required="true">
+				<label>Use SSL</label>
+				<description></description>
+				<default>true</default>
+			</parameter>
+			<parameter name="username" type="text" required="true">
+				<label>Username</label>
+				<description></description>
+			</parameter>
+			<parameter name="password" type="text" required="true">
+				<label>Password</label>
+				<description></description>
+			</parameter>
+			<parameter name="playlistName" type="text" required="true">
+				<label>Playlist Name</label>
+				<description></description>
+			</parameter>
+			<parameter name="playerName" type="text" required="true">
+				<label>Player Name</label>
+				<description></description>
+
+			</parameter>
+		</config-description>
+	</thing-type>
+
+	<!-- Sample Channel Type -->
+	<channel-type id="dsaudio_channel">
+		<item-type>Player</item-type>
+		<label>Start Playing</label>
+		<description>Command that will start playing playlist</description>
+		<state readOnly="false"></state>
+	</channel-type>
+	<channel-type id="artist">
+		<item-type>String</item-type>
+		<label>Artist</label>
+		<description>Artist name of the current song</description>
+		<state readOnly="true" pattern="%s"></state>
+	</channel-type>
+	<channel-type id="title">
+		<item-type>String</item-type>
+		<label>Title</label>
+		<description>Title of the current song</description>
+		<state readOnly="true" pattern="%s"></state>
+	</channel-type>
+	<channel-type id="coverartdata">
+		<item-type>Image</item-type>
+		<label>Cover Art</label>
+		<description>Image data of cover art of the current song</description>
+		<state readOnly="true"></state>
+	</channel-type>
+
+</thing:thing-descriptions>
